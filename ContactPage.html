@@ -51,6 +51,13 @@
     }
   </style>
   <body>
+    <script type="text/javascript">
+      var onloadCallback = function () {
+        grecaptcha.render("html_element", {
+          sitekey: "6LdD5MsZAAAAACxZR-g6YHs2We1ijkPcJJRUGW8-",
+        });
+      };
+    </script>
     <script>
       function subjectSelect() {
         var value = document.getElementById("subjectField").value;
@@ -70,7 +77,7 @@
       <form
         method="POST"
         name="fa-form-1"
-        action="https://webhook.frontapp.com/forms/9cd73e5ab33060fafffe/weuHyQ3chBwzTrkXrz1DwZLcAvNVjLk96mKkoX-dpxAX5W3hhccLOH7ROuHB-1FBkJrKMrYo99rUGu9RsfEH1Tfc_oZPskVjDspULkL8wGg7cl-YWYQb1oRof_pZ"
+        action="https://webhook.frontapp.com/forms/b416d85ed228100d337c/BpbY8232vMxkJM8DtLz_3qRmGOtcLSrDZN9eVRtL2Zh4MniF-czphRvNKOvuwtif1WqDOiXwgK6yiWSKiKlHF0reWNKMA8MQPPqhNq5pROb7fxM6a-AwFAUFl1X5"
         enctype="multipart/form-data"
         accept-charset="utf-8"
       >
@@ -102,6 +109,11 @@
         <div class="row">
           <input type="submit" value="Send" />
         </div>
+        <script
+          src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+          async
+          defer
+        ></script>
       </form>
     </div>
   </body>
