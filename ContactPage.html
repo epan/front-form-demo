@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    .contactus input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 12px;
+      margin: 4px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .contactus input[type="submit"] {
+      width: 100%;
+      background-color: #1d4579;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .contactus input[type="submit"]:hover {
+      background-color: #0a2951;
+    }
+
+    .contactus form {
+      border-radius: 5px;
+      background-color: #e6e8f2;
+    }
+
+    .contactus .row {
+      padding-bottom: 20px;
+    }
+
+    .contactus .helper {
+      background-color: #dadce5;
+      border-radius: 5px;
+      padding: 12px;
+      margin-top: 4px;
+      color: #050505;
+      font-size: 14px;
+    }
+
+    .contactus .helper .h4 {
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <script>
+      function subjectSelect() {
+        var value = document.getElementById("subjectField").value;
+        if (value == "1") {
+          document.getElementById("helperTip").innerHTML =
+            '<div class="h4"> Looking for voter information? </div><div> Review and update your voter information at <a href="https://myvote.wi.gov/en-us/MyVoterInfo"> Wisconson My Voter Info</a>?  </div>';
+        }
+        if (value == "2") {
+          // console.log("subjectSelect called with value: " + value)
+          document.getElementById("helperTip").innerHTML =
+            'A list of polling locations is found <a href="https://greenbaywi.gov/DocumentCenter/View/5704/Polling-Locations-for-August-2020-Election-PDF">here</>';
+        }
+      }
+    </script>
+
+    <div class="contactus">
+      <form
+        method="POST"
+        name="fa-form-1"
+        action="https://webhook.frontapp.com/forms/9cd73e5ab33060fafffe/weuHyQ3chBwzTrkXrz1DwZLcAvNVjLk96mKkoX-dpxAX5W3hhccLOH7ROuHB-1FBkJrKMrYo99rUGu9RsfEH1Tfc_oZPskVjDspULkL8wGg7cl-YWYQb1oRof_pZ"
+        enctype="multipart/form-data"
+        accept-charset="utf-8"
+      >
+        <div class="row">
+          <label for="subject">Subject</label>
+          <select id="subjectField" name="subject" onchange="subjectSelect()">
+            <option value="0" selected="selected">Select one</option>
+            <option value="1">I need to update my voter information</option>
+            <option value="2">Where is my polling station?</option>
+          </select>
+          <div class="helper" id="helperTip"></div>
+        </div>
+
+        <div class="row">
+          <label for="name">Name</label>
+          <input type="text" name="name" />
+        </div>
+
+        <div class="row">
+          <label for="email">Email</label>
+          <input type="email" name="email" />
+        </div>
+
+        <div class="row">
+          <label for="message"> Message </label>
+          <textarea name="message" rows="5"></textarea>
+        </div>
+
+        <div class="row">
+          <input type="submit" value="Send" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
