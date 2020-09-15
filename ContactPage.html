@@ -56,6 +56,14 @@
       };
     </script>
     <script>
+      function ready(fn) {
+        if (document.readyState != "loading") {
+          fn();
+        } else {
+          document.addEventListener("DOMContentLoaded", fn);
+        }
+      }
+
       function show(el) {
         el.style.display = "";
       }
@@ -74,9 +82,13 @@
         hide(getHelper());
       }
 
+      function getSubject() {
+        return document.querySelector('select[name="subject"]');
+      }
+
       function subjectSelect() {
         const helper = getHelper();
-        var value = document.querySelector('select[name="subject"]').value;
+        var value = getSubject().value;
         if (value === "0") {
           hideHelper();
         }
@@ -119,6 +131,8 @@
           hideHelper();
         }
       }
+
+      // ready(() => (getSubject().onchange = subjectSelect));
     </script>
 
     <div class="contactus">
