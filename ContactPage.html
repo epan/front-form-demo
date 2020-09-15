@@ -44,7 +44,11 @@
       margin-top: 4px;
       color: #050505;
       font-size: 14px;
-      /* display: none; */
+      display: none;
+    }
+
+    .show {
+      display: block;
     }
   </style>
   <body>
@@ -65,10 +69,10 @@
       }
 
       function show(el) {
-        el.style.display = "";
+        el.classList.add("show");
       }
       function hide(el) {
-        el.style.display = "none";
+        el.classList.remove("show");
       }
       function getHelper() {
         return document.querySelector(".helper");
