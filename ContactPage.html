@@ -24,7 +24,7 @@
       box-sizing: border-box;
     }
 
-    .contactus input[type="submit"] {
+    .submit {
       width: 100%;
       background-color: #1d4579;
       color: white;
@@ -35,7 +35,7 @@
       cursor: pointer;
     }
 
-    .contactus input[type="submit"]:hover {
+    .submit:hover {
       background-color: #0a2951;
     }
 
@@ -103,46 +103,83 @@
       function subjectSelect() {
         const helper = getHelper();
         var value = getSubject().value;
-        if (value === "0") {
-          hideHelper();
-        }
-        if (value === "Mail My Ballot") {
-          helper.innerHTML =
-            "You can mail it back or it can be put in a City of Green Bay drop box. For locations visit: (link-this hasn’t been established yet) until 8pm on Election Day.";
-          showHelper();
-        }
-        if (value === "Request an Absentee Ballot") {
-          helper.innerHTML =
-            "Send a request with your name, address, and signature. Please include a photo id and mail to CityClerk’s Office at 100 N. Jefferson St. Rm 106, Green Bay, WI 54301";
-          showHelper();
-        }
-        if (value === "Register to Vote") {
-          helper.innerHTML =
-            "Go to <a href='https://myvote.wi.gov/en-US/RegisterToVote' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-US/RegisterToVote</a>. Application can be printed off of our website and mailed in with proof of Residence or we can mail an application to you.";
-          showHelper();
-        }
-        if (value === "Check My Ballot Status") {
-          helper.innerHTML =
-            "You can check your ballot at <a href='https://myvote.wi.gov/en-us/MyVoterInfo' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-us/MyVoterInfo</a>. Ballots will start to be mailed September 17. If you requested your ballot after Sep 17, you need to wait 24 business hours.";
-          showHelper();
-        }
-        if (value === "Voting Locations") {
-          helper.innerHTML =
-            "Check <a href='https://myvote.wi.gov/en-US/FindMyPollingPlace' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-US/FindMyPollingPlace</a> for polling locations. You can also contact the Clerk’s office at (920) 448-1010.";
-          showHelper();
-        }
-        if (value === "Voting Early") {
-          helper.innerHTML =
-            "In person early absentee voting is from Oct 20 to Oct 31 at the Clerk’s office in City Hall. Hours are posted on the website <a href='https://greenbaywi.gov/655/Election-Information' target='blank' rel='noreferrer noopener'>greenbaywi.gov/655/Election-Information</a>";
-          showHelper();
-        }
-        if (value === "Be a Poll Worker") {
-          helper.innerHTML =
-            "Visit <a href='https://greenbaywi.gov/1047/Poll-Workers' target='blank' rel='noreferrer noopener'>greenbaywi.gov/1047/Poll-Workers</a> for more information";
-          showHelper();
-        }
-        if (value === "Other") {
-          hideHelper();
+
+        const Subject = {
+          SelectOne: "Select one",
+          MailMyBallot: "Mail My Ballot",
+          RequestAnAbsenteeBallot: "Request an Absentee Ballot",
+          RegisterToVote: "Register to Vote",
+          CheckMyBallotStatus: "Check My Ballot Status",
+          VotingLocations: "Voting Locations",
+          VotingEarly: "Voting Early",
+          BeAPollWorker: "Be a Poll Worker",
+        };
+
+        const SubjectsOrdered = [
+          Subject.SelectOne,
+          Subject.MailMyBallot,
+          Subject.RequestAnAbsenteeBallot,
+          Subject.RegisterToVote,
+          Subject.CheckMyBallotStatus,
+          Subject.VotingLocations,
+          Subject.VotingEarly,
+          Subject.BeAPollWorker,
+        ];
+
+        const HelperContent = {
+          [Subject.MailMyBallot]:
+            "You can mail it back or it can be put in a City of Green Bay drop box. For locations visit: (link-this hasn’t been established yet) until 8pm on Election Day.",
+          [Subject.RequestAnAbsenteeBallot]:
+            "To request an absentee ballot, send a request with your name, address, and signature. Please include a photo id and mail to CityClerk’s Office at 100 N. Jefferson St. Rm 106, Green Bay, WI 54301.",
+          [Subject.RegisterToVote]:
+            "You can register to vote via <a href='https://myvote.wi.gov/en-US/RegisterToVote' target='blank' rel='noreferrer noopener'>MyVote Wisconsin</a>. If you have a driver’s license or state id, you can register online. Otherwise, you’ll need to print and send an application with proof of residence. with a valid driver’s license or state id.",
+          [Subject.CheckMyBallotStatus]:
+            "You can check your ballot at <a href='https://myvote.wi.gov/en-us/MyVoterInfo' target='blank' rel='noreferrer noopener'>MyVote Wisconsin</a>. Ballots will start to be mailed September 17. If you requested your ballot after Sep 17, you need to wait 24 business hours.",
+          [Subject.VotingLocations]:
+            "Check the <a href='https://myvote.wi.gov/en-US/FindMyPollingPlace' target='blank' rel='noreferrer noopener'>Find My Polling Place</a> tool for polling locations.",
+          [Subject.VotingEarly]:
+            "In person early absentee voting is from Oct 20 to Oct 31 at the Clerk’s office in City Hall. Hours are posted on our <a href='https://greenbaywi.gov/655/Election-Information' target='blank' rel='noreferrer noopener'>our website</a>.",
+          [Subject.BeAPollWorker]:
+            "Please be sure to read <a href='https://greenbaywi.gov/1047/Poll-Workers' target='blank' rel='noreferrer noopener'>our page about becoming a Poll Worker</a> for more information.",
+        };
+
+        switch (value) {
+          case "0":
+            hideHelper();
+            break;
+          case Subject.MailMyBallot:
+            helper.innerHTML = HelperContent[Subject.MailMyBallot];
+            showHelper();
+            break;
+          case Subject.RequestAnAbsenteeBallot:
+            helper.innerHTML = HelperContent[Subject.RequestAnAbsenteeBallot];
+            showHelper();
+            break;
+          case Subject.RegisterToVote:
+            helper.innerHTML = HelperContent[Subject.RegisterToVote];
+            showHelper();
+            break;
+          case Subject.CheckMyBallotStatus:
+            helper.innerHTML = HelperContent[Subject.CheckMyBallotStatus];
+            showHelper();
+            break;
+          case Subject.VotingLocations:
+            helper.innerHTML = HelperContent[Subject.VotingLocations];
+            showHelper();
+            break;
+          case Subject.VotingEarly:
+            helper.innerHTML = HelperContent[Subject.VotingEarly];
+            showHelper();
+            break;
+          case Subject.BeAPollWorker:
+            helper.innerHTML = HelperContent[Subject.BeAPollWorker];
+            showHelper();
+            break;
+          case "Other":
+            hideHelper();
+            break;
+          default:
+            break;
         }
       }
 
@@ -196,7 +233,7 @@
         <div id="html_element"></div>
 
         <div class="row">
-          <input type="submit" value="Send" />
+          <input class="submit" type="submit" value="Send" />
         </div>
         <script
           src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
