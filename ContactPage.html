@@ -144,7 +144,7 @@
         };
 
         switch (value) {
-          case "0":
+          case "":
             hideHelper();
             break;
           case Subject.MailMyBallot:
@@ -196,8 +196,8 @@
       >
         <div class="row">
           <label for="subject">Subject</label>
-          <select name="subject" onchange="subjectSelect()">
-            <option value="0" selected="selected">Select one</option>
+          <select required name="subject" onchange="subjectSelect()">
+            <option value="">Select one</option>
             <option value="Mail My Ballot">Mail My Ballot</option>
             <option value="Request an Absentee Ballot">
               Request an Absentee Ballot
@@ -216,17 +216,17 @@
 
         <div class="row">
           <label for="name">Name</label>
-          <input type="text" name="name" />
+          <input required type="text" name="name" />
         </div>
 
         <div class="row">
           <label for="email">Email</label>
-          <input type="email" name="email" />
+          <input required type="email" name="email" />
         </div>
 
         <div class="row">
           <label for="body"> Message </label>
-          <textarea name="body" rows="5"></textarea>
+          <textarea required name="body" rows="5"></textarea>
         </div>
 
         <!-- captcha element -->
