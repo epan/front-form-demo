@@ -103,42 +103,75 @@
       function subjectSelect() {
         const helper = getHelper();
         var value = getSubject().value;
+
+        const Subject = {
+          SelectOne: "Select one",
+          MailMyBallot: "Mail My Ballot",
+          RequestAnAbsenteeBallot: "Request an Absentee Ballot",
+          RegisterToVote: "Register to Vote",
+          CheckMyBallotStatus: "Check My Ballot Status",
+          VotingLocations: "Voting Locations",
+          VotingEarly: "Voting Early",
+          BeAPollWorker: "Be a Poll Worker",
+        };
+
+        const SubjectsOrdered = [
+          Subject.SelectOne,
+          Subject.MailMyBallot,
+          Subject.RequestAnAbsenteeBallot,
+          Subject.RegisterToVote,
+          Subject.CheckMyBallotStatus,
+          Subject.VotingLocations,
+          Subject.VotingEarly,
+          Subject.BeAPollWorker,
+        ];
+
+        const HelperContent = {
+          [Subject.MailMyBallot]:
+            "You can mail it back or it can be put in a City of Green Bay drop box. For locations visit: (link-this hasn’t been established yet) until 8pm on Election Day.",
+          [Subject.RequestAnAbsenteeBallot]:
+            "Send a request with your name, address, and signature. Please include a photo id and mail to CityClerk’s Office at 100 N. Jefferson St. Rm 106, Green Bay, WI 54301",
+          [Subject.RegisterToVote]:
+            "Go to <a href='https://myvote.wi.gov/en-US/RegisterToVote' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-US/RegisterToVote</a>. Application can be printed off of our website and mailed in with proof of Residence or we can mail an application to you.",
+          [Subject.CheckMyBallotStatus]:
+            "You can check your ballot at <a href='https://myvote.wi.gov/en-us/MyVoterInfo' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-us/MyVoterInfo</a>. Ballots will start to be mailed September 17. If you requested your ballot after Sep 17, you need to wait 24 business hours.",
+          [Subject.VotingLocations]:
+            "Check <a href='https://myvote.wi.gov/en-US/FindMyPollingPlace' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-US/FindMyPollingPlace</a> for polling locations. You can also contact the Clerk’s office at (920) 448-1010.",
+          [Subject.VotingEarly]:
+            "In person early absentee voting is from Oct 20 to Oct 31 at the Clerk’s office in City Hall. Hours are posted on the website <a href='https://greenbaywi.gov/655/Election-Information' target='blank' rel='noreferrer noopener'>greenbaywi.gov/655/Election-Information</a>",
+          [Subject.BeAPollWorker]:
+            "Visit <a href='https://greenbaywi.gov/1047/Poll-Workers' target='blank' rel='noreferrer noopener'>greenbaywi.gov/1047/Poll-Workers</a> for more information",
+        };
+
         if (value === "0") {
           hideHelper();
         }
-        if (value === "Mail My Ballot") {
-          helper.innerHTML =
-            "You can mail it back or it can be put in a City of Green Bay drop box. For locations visit: (link-this hasn’t been established yet) until 8pm on Election Day.";
+        if (value === Subject.MailMyBallot) {
+          helper.innerHTML = HelperContent[Subject.MailMyBallot];
           showHelper();
         }
-        if (value === "Request an Absentee Ballot") {
-          helper.innerHTML =
-            "Send a request with your name, address, and signature. Please include a photo id and mail to CityClerk’s Office at 100 N. Jefferson St. Rm 106, Green Bay, WI 54301";
+        if (value === Subject.RequestAnAbsenteeBallot) {
+          helper.innerHTML = HelperContent[Subject.RequestAnAbsenteeBallot];
           showHelper();
         }
-        if (value === "Register to Vote") {
-          helper.innerHTML =
-            "Go to <a href='https://myvote.wi.gov/en-US/RegisterToVote' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-US/RegisterToVote</a>. Application can be printed off of our website and mailed in with proof of Residence or we can mail an application to you.";
+        if (value === Subject.RegisterToVote) {
+          helper.innerHTML = HelperContent[Subject.RegisterToVote];
           showHelper();
         }
-        if (value === "Check My Ballot Status") {
-          helper.innerHTML =
-            "You can check your ballot at <a href='https://myvote.wi.gov/en-us/MyVoterInfo' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-us/MyVoterInfo</a>. Ballots will start to be mailed September 17. If you requested your ballot after Sep 17, you need to wait 24 business hours.";
+        if (value === Subject.CheckMyBallotStatus) {
+          helper.innerHTML = HelperContent[Subject.CheckMyBallotStatus];
           showHelper();
         }
-        if (value === "Voting Locations") {
-          helper.innerHTML =
-            "Check <a href='https://myvote.wi.gov/en-US/FindMyPollingPlace' target='blank' rel='noreferrer noopener'>myvote.wi.gov/en-US/FindMyPollingPlace</a> for polling locations. You can also contact the Clerk’s office at (920) 448-1010.";
+        if (value === Subject.VotingLocations) {
+          helper.innerHTML = HelperContent[Subject.VotingLocations];
           showHelper();
         }
-        if (value === "Voting Early") {
-          helper.innerHTML =
-            "In person early absentee voting is from Oct 20 to Oct 31 at the Clerk’s office in City Hall. Hours are posted on the website <a href='https://greenbaywi.gov/655/Election-Information' target='blank' rel='noreferrer noopener'>greenbaywi.gov/655/Election-Information</a>";
+        if (value === Subject.VotingEarly) {
+          helper.innerHTML = HelperContent[Subject.VotingEarly];
           showHelper();
         }
-        if (value === "Be a Poll Worker") {
-          helper.innerHTML =
-            "Visit <a href='https://greenbaywi.gov/1047/Poll-Workers' target='blank' rel='noreferrer noopener'>greenbaywi.gov/1047/Poll-Workers</a> for more information";
+        if (value === Subject.BeAPollWorker) {
+          helper.innerHTML = HelperContent[Subject.BeAPollWorker];
           showHelper();
         }
         if (value === "Other") {
