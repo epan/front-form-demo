@@ -143,39 +143,43 @@
             "Visit <a href='https://greenbaywi.gov/1047/Poll-Workers' target='blank' rel='noreferrer noopener'>greenbaywi.gov/1047/Poll-Workers</a> for more information",
         };
 
-        if (value === "0") {
-          hideHelper();
-        }
-        if (value === Subject.MailMyBallot) {
-          helper.innerHTML = HelperContent[Subject.MailMyBallot];
-          showHelper();
-        }
-        if (value === Subject.RequestAnAbsenteeBallot) {
-          helper.innerHTML = HelperContent[Subject.RequestAnAbsenteeBallot];
-          showHelper();
-        }
-        if (value === Subject.RegisterToVote) {
-          helper.innerHTML = HelperContent[Subject.RegisterToVote];
-          showHelper();
-        }
-        if (value === Subject.CheckMyBallotStatus) {
-          helper.innerHTML = HelperContent[Subject.CheckMyBallotStatus];
-          showHelper();
-        }
-        if (value === Subject.VotingLocations) {
-          helper.innerHTML = HelperContent[Subject.VotingLocations];
-          showHelper();
-        }
-        if (value === Subject.VotingEarly) {
-          helper.innerHTML = HelperContent[Subject.VotingEarly];
-          showHelper();
-        }
-        if (value === Subject.BeAPollWorker) {
-          helper.innerHTML = HelperContent[Subject.BeAPollWorker];
-          showHelper();
-        }
-        if (value === "Other") {
-          hideHelper();
+        switch (value) {
+          case "0":
+            hideHelper();
+            break;
+          case Subject.MailMyBallot:
+            helper.innerHTML = HelperContent[Subject.MailMyBallot];
+            showHelper();
+            break;
+          case Subject.RequestAnAbsenteeBallot:
+            helper.innerHTML = HelperContent[Subject.RequestAnAbsenteeBallot];
+            showHelper();
+            break;
+          case Subject.RegisterToVote:
+            helper.innerHTML = HelperContent[Subject.RegisterToVote];
+            showHelper();
+            break;
+          case Subject.CheckMyBallotStatus:
+            helper.innerHTML = HelperContent[Subject.CheckMyBallotStatus];
+            showHelper();
+            break;
+          case Subject.VotingLocations:
+            helper.innerHTML = HelperContent[Subject.VotingLocations];
+            showHelper();
+            break;
+          case Subject.VotingEarly:
+            helper.innerHTML = HelperContent[Subject.VotingEarly];
+            showHelper();
+            break;
+          case Subject.BeAPollWorker:
+            helper.innerHTML = HelperContent[Subject.BeAPollWorker];
+            showHelper();
+            break;
+          case "Other":
+            hideHelper();
+            break;
+          default:
+            break;
         }
       }
 
